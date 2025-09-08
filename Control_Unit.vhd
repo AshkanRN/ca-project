@@ -24,7 +24,7 @@ architecture Behavioral of Control_Unit is
 begin
     process (OpCode)
     begin
-        -- Default values for control signals
+        -- init
         RegWrite         <= '0';
         MemRead          <= '0';
         MemWrite         <= '0';
@@ -54,12 +54,11 @@ begin
 
             when "0011" => -- MOV
                 RegWrite <= '1';
-                AluSrc   <= '0';
                 AluOp    <= "0011";
     
             when "0100" => -- CMP
                 RegWrite <= '0';
-				Reg2Loc  <= '1';
+				Reg2Loc  <= '0';
                 AluOp    <= "0100";  
 
             when "0101" => -- XOR
@@ -71,17 +70,17 @@ begin
                 AluOp    <= "0110";
 
             when "0111" => -- SHL
-                Reg2Loc  <= '1';
+                -- Reg2Loc  <= '1';
                 RegWrite <= '1';
                 AluOp    <= "0111";
 
             when "1000" => -- SHR
-                Reg2Loc  <= '1';
+                -- Reg2Loc  <= '1';
 				RegWrite <= '1';
                 AluOp    <= "1000";
 
             when "1001" => -- COM"
-                RegWrite <= '1';
+                RegWrite <= '0';
                 Reg2Loc  <= '0';
                 ALUOp    <= "1001";
 

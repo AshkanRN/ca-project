@@ -15,9 +15,7 @@ architecture sim of CPU_TB is
         );
     end component;
 
-    ----------------------------------------------------------------------
-    -- Signals for CPU inputs/outputs
-    ----------------------------------------------------------------------
+
     signal clk : std_logic := '0';  
     signal rst : std_logic := '0';
 
@@ -47,23 +45,14 @@ begin
 
     stim_proc : process
     begin
-        ------------------------------------------------------------------
-        -- 1) Apply reset
-        -- Keep reset high for 2 cycles to initialize CPU and registers
-        ------------------------------------------------------------------
+     
         rst <= '1';
         wait until rising_edge(clk);
         rst <= '0';
 
-        ------------------------------------------------------------------
-        -- 2) Let CPU run through instructions
-        -- Adjust this delay based on how many instructions you have
-        ------------------------------------------------------------------
+       
         wait for 500 ns;
 
-        ------------------------------------------------------------------
-        -- 3) Stop simulation
-        ------------------------------------------------------------------
         stop_sim <= true;
 
         wait;

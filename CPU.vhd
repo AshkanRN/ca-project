@@ -51,7 +51,7 @@ architecture Behavioural of CPU is
 
     signal PC_vector : std_logic_vector(8 downto 0);
 
-
+    signal z : std_logic;
     
 
 begin
@@ -105,12 +105,24 @@ begin
     end process;
 
 
-    process (zeroBranchFlg, notZeroBranchFlg, uncondBranchFlg)
+    process (zeroBranchFlg, notZeroBranchFlg, uncondBranchFlg, zeroFlg)
     begin
         branchPC <= (zeroBranchFlg and zeroFlg)
                 or (notZeroBranchFlg and (not zeroFlg))
                 or uncondBranchFlg;
     end process;
+
+    -- process (zeroBranchFlg, notZeroBranchFlg, uncondBranchFlg,readData2)
+    -- begin
+    --     if readData2 = "00000000" then
+    --         z <= '1';
+    --     else
+    --         z <= '0';    
+    --     end if ;    
+    --     branchPC <= (zeroBranchFlg and z)
+    --             or (notZeroBranchFlg and (not z))
+    --             or uncondBranchFlg;
+    -- end process;
 
     Control_Unit : entity work.Control_Unit
         port map(
@@ -144,16 +156,16 @@ begin
         
     ALU : entity work.ALU
         port map(
-           clk => clk,
-           rst => rst,
-           A => signed(readData1),
-           B => signed(AluInput2),
-           opCode => AluOp,
+           clk      => clk,
+           rst      => rst,
+           A        => signed(readData1),
+           B        => signed(AluInput2),
+           opCode   => AluOp,
             
-           result => AluResult,
+           result   => AluResult,
            carryFlg => carryFlg,
-           zeroFlg => zeroFlg,
-           signFlg => signFlg
+           zeroFlg  => zeroFlg,
+           signFlg  => signFlg
         );
 
     Data_Memory : entity work.Data_Memory

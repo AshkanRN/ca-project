@@ -16,7 +16,7 @@ entity Register_files is
         readData2    : out STD_LOGIC_VECTOR(7 downto 0)
         );
         -- The outputs readData1 and readData2 always show the current contents of the registers selected
-        -- by readReg1 and readReg2 ? immediately and combinationally.
+        -- by readReg1 and readReg2 immediately and combinationally.
 end entity Register_files;    
 
 architecture Behavioural of Register_files is
