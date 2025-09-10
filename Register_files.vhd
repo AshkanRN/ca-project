@@ -22,16 +22,7 @@ end entity Register_files;
 architecture Behavioural of Register_files is
         type regArray is array (0 to 7) of std_logic_vector(7 downto 0);
         signal registers : regArray := (others => (others => '0'));
-        -- signal registers : regArray := (
-        --     0 => x"01",  -- R0 = 1
-        --     1 => x"02",  -- R1 = 2
-        --     2 => x"03",  -- R2 = 3
-        --     3 => x"04",  -- R3 = 4
-        --     4 => x"05",  -- R4 = 5
-        --     5 => x"06",  -- R5 = 6
-        --     6 => x"07",  -- R6 = 7
-        --     7 => x"08"   -- R7 = 8
-        --     );
+        
     begin
 
         readData1 <= registers(to_integer(unsigned(readReg1)));
@@ -41,16 +32,7 @@ architecture Behavioural of Register_files is
         begin
             if rst = '1' then
                 registers <= (others => (others => '0'));
-                -- registers <= (
-                --     0 => x"01",  -- R0 = 1
-                --     1 => x"02",  -- R1 = 2
-                --     2 => x"03",  -- R2 = 3
-                --     3 => x"04",  -- R3 = 4
-                --     4 => x"05",  -- R4 = 5
-                --     5 => x"06",  -- R5 = 6
-                --     6 => x"07",  -- R6 = 7
-                --     7 => x"08"   -- R7 = 8
-                --     );
+            
             elsif rising_edge(clk) then
                 if writeControl = '1' then
                     registers(to_integer(unsigned(writeReg))) <= writeData;

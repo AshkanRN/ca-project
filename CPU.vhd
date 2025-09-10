@@ -4,8 +4,9 @@ use ieee.numeric_std.all;
 
 entity CPU is
     port(
-        clk : in std_logic;
-        rst : in std_logic
+        clk             : in std_logic;
+        rst             : in std_logic;
+        instruction_out : out STD_LOGIC_VECTOR(15 downto 0)
     );
 end entity CPU;
 
@@ -31,7 +32,6 @@ architecture Behavioural of CPU is
     
     -- PC
     signal PC       : integer range 0 to 511;
-    signal offset   : std_logic_vector(7 downto 0);
     signal branchPC : std_logic;
 
     -- ALU
@@ -40,9 +40,9 @@ architecture Behavioural of CPU is
     signal carryFlg, zeroFlg, signFlg : std_logic;
 
     -- Register Bank
-    signal readReg2          : STD_LOGIC_VECTOR(2 downto 0); -- second input
-    signal readData1         : STD_LOGIC_VECTOR(7 downto 0); -- first output
-    signal readData2         : STD_LOGIC_VECTOR(7 downto 0); -- second output
+    signal readReg2          : STD_LOGIC_VECTOR(2 downto 0); -- second reg input
+    signal readData1         : STD_LOGIC_VECTOR(7 downto 0); -- first reg output
+    signal readData2         : STD_LOGIC_VECTOR(7 downto 0); -- second reg output
     signal writeDataRegister : std_logic_vector(7 downto 0); -- write data input
     
     signal memoryDataOut : std_logic_vector(7 downto 0);
@@ -51,10 +51,10 @@ architecture Behavioural of CPU is
 
     signal PC_vector : std_logic_vector(8 downto 0);
 
-    signal z : std_logic;
-    
 
 begin
+
+
     process (PC)
     begin
        PC_vector <= std_logic_vector(to_unsigned(PC, 9)); 
@@ -103,8 +103,7 @@ begin
             AluInput2 <= readData2;
         end if;        
     end process;
-
-
+        
     process (zeroBranchFlg, notZeroBranchFlg, uncondBranchFlg, zeroFlg)
     begin
         branchPC <= (zeroBranchFlg and zeroFlg)
@@ -112,17 +111,7 @@ begin
                 or uncondBranchFlg;
     end process;
 
-    -- process (zeroBranchFlg, notZeroBranchFlg, uncondBranchFlg,readData2)
-    -- begin
-    --     if readData2 = "00000000" then
-    --         z <= '1';
-    --     else
-    --         z <= '0';    
-    --     end if ;    
-    --     branchPC <= (zeroBranchFlg and z)
-    --             or (notZeroBranchFlg and (not z))
-    --             or uncondBranchFlg;
-    -- end process;
+
 
     Control_Unit : entity work.Control_Unit
         port map(
@@ -196,7 +185,7 @@ begin
             PC => PC
         );
 
-
+    instruction_out <= instruction;    
 
             
 

@@ -11,11 +11,11 @@ entity Control_Unit is
         MemWrite         : out std_logic;
         AluSrc           : out std_logic;
         Reg2Loc          : out std_logic;
-        AluOp            : out STD_LOGIC_VECTOR(3 downto 0);
         MemToReg         : out std_logic; 
         zeroBranchFlg    : out std_logic;
         notZeroBranchFlg : out std_logic;
-        uncondBranchFlg  : out std_logic
+        uncondBranchFlg  : out std_logic;
+        AluOp            : out STD_LOGIC_VECTOR(3 downto 0)
     );
 end entity Control_Unit;    
 
@@ -111,13 +111,13 @@ begin
 
             when "1110" => -- BZ
 				Reg2Loc       <= '1';
-				AluOp         <= "1110";
                 zeroBranchFlg <= '1';
+				AluOp         <= "1110";
 
             when "1111" => -- BNZ 
 				Reg2Loc          <= '1';	
-				AluOp            <= "1111";
                 notZeroBranchFlg <= '1';
+				AluOp            <= "1111";
                     
 
             when others =>

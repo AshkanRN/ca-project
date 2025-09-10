@@ -32,7 +32,7 @@ architecture sim of Data_Memory_TB is
 
 begin
 
-    -- Instantiate Unit Under Test (UUT)
+ 
     uut: Data_Memory
         port map (
             clk       => clk,
@@ -56,7 +56,7 @@ begin
         wait;
     end process;
 
-    -- Stimulus process
+  
     stim_proc: process
     begin
         -- Write value 11110000 to address 000000001 (1)
