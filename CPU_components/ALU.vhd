@@ -133,7 +133,7 @@ begin
                 
 
             when "1001" => -- COM R1 (R1 = NOT R1)
-                tempResult := resize(not A, 0);
+                tempResult := resize(not A, 9);
 
                 SignFlg <= not A(7);
                 if tempResult(7 downto 0) = "00000000" then
