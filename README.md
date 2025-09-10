@@ -1,7 +1,10 @@
 # ARMa — 16-bit VHDL Processor
 
 This repository contains the VHDL implementation of a **educational 16-bit processor** (ARMa), built as part of the Computer Architecture course project.  
-It includes a modular design with ALU, register file, instruction/data memory, control unit, and testbenches.  
+It includes a modular design with ALU, register file, instruction Memory, data memory, control unit, and testbenches. 
+
+[Download Project Assignment File](https://github.com/AshkanRN/ca-project-gu/releases/download/dl/ProjectCA14032.pdf
+) 
 
 ---
 
