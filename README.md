@@ -1,10 +1,9 @@
 # ARMa — 16-bit VHDL Processor
 
-This repository contains the VHDL implementation of a **educational 16-bit processor** (ARMa), built as part of the Computer Architecture course project.  
-It includes a modular design with ALU, register file, instruction Memory, data memory, control unit, and testbenches. 
+VHDL implementation of an **educational processor** — instructions are 16 bits wide, while the datapath and registers are 8 bits (all arithmetic and logic operations are performed on 8-bit values).
+ 
 
-[Download Project Assignment File](https://github.com/AshkanRN/ca-project-gu/releases/download/dl/ProjectCA14032.pdf
-) 
+[Project Assignment File](https://github.com/AshkanRN/ca-project-gu/releases/download/dl/ProjectCA14032.pdf) 
 
 ---
 
@@ -13,7 +12,7 @@ It includes a modular design with ALU, register file, instruction Memory, data m
 - **Flags**: Carry, Zero, and Sign.  
 - **Memory**:  
   - Byte-addressable data memory.  
-  - Instruction memory (16-bit word wide).  
+  - Instruction memory (16-bit wide).  
 - **Supported instructions**:  
   `ADD`, `SUB`, `ADDI`, `MOV`, `CMP`, `XOR`, `AND`, `SHL`, `SHR`, `COM`, `INC`, `LD`, `ST`, `BR`, `BZ`, `BNZ`.  
 - Modular components: `ALU`, `Register_Files`, `Program_Counter`, `Instruction_Memory`, `Data_Memory`, `Control_Unit`.
@@ -73,21 +72,22 @@ It includes a modular design with ALU, register file, instruction Memory, data m
 
 ## Instruction Set (Opcode Map)
 
-| Opcode | Mnemonic | Description                  |
-|--------|----------|------------------------------|
-| 0000   | ADD      | Add two registers            |
-| 0001   | SUB      | Subtract two registers       |
-| 0010   | ADDI     | Add immediate                |
-| 0011   | MOV      | Move register/immediate      |
-| 0100   | CMP      | Compare registers (set flags)|
-| 0101   | XOR      | Bitwise XOR                  |
-| 0110   | AND      | Bitwise AND                  |
-| 0111   | SHL      | Shift left by 1 bit          |
-| 1000   | SHR      | Shift right by 1 bit         |
-| 1001   | COM      | Complement (NOT)             |
-| 1010   | INC      | Increment register by 1      |
-| 1011   | LD       | Load from memory             |
-| 1100   | ST       | Store to memory              |
-| 1101   | BR       | Unconditional branch         |
-| 1110   | BZ       | Branch if zero               |
-| 1111   | BNZ      | Branch if not zero           |
+| Opcode | Example            | Description                                |
+|--------|--------------------|--------------------------------------------|
+| 0000   | ADD R0, R1, R2     | Add two registers (R0 = R1 + R2)           |
+| 0001   | SUB R0, R1, R2     | Subtract two registers (R0 = R1 - R2)      |
+| 0010   | ADDI R0, R1, #5    | Add immediate (R0 = R1 + 5)                |
+| 0011   | MOV R0, R1         | Move register (R0 = R1)                    |
+| 0100   | CMP R1, R2         | Compare registers (set flags based on R1-R2) |
+| 0101   | XOR R0, R1, R2     | Bitwise XOR (R0 = R1 XOR R2)                 |
+| 0110   | AND R0, R1, R2     | Bitwise AND (R0 = R1 & R2)                 |
+| 0111   | SHL R0, R1         | Shift left by 1 bit (R0 = R1 << 1)         |
+| 1000   | SHR R0, R1         | Shift right by 1 bit (R0 = R1 >> 1)        |
+| 1001   | COM R0, R1         | Complement (R0 = NOT R1)                   |
+| 1010   | INC R0, R1         | Increment register by 1 (R0 = R1 + 1)      |
+| 1011   | LD R0, [R1+4]      | Load from memory (R0 = MEM[R1+4])          |
+| 1100   | ST R0, [R1+4]      | Store to memory (MEM[R1+4] = R0)           |
+| 1101   | BR #20             | Unconditional branch to address 20         |
+| 1110   | BZ R1, #20         | Branch to address 20 if R1 == 0            |
+| 1111   | BNZ R1, #20        | Branch to address 20 if R1 != 0            |
+
