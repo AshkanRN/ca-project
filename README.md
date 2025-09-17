@@ -168,3 +168,21 @@ VHDL implementation of an **educational processor** — instructions are 16 bits
 
 7. **View signals**  
    - Open the waveform viewer inside Active-HDL to inspect signals during simulation.
+
+
+---
+
+ **Note:** Running `CPU_TB.vhd` will execute the instructions stored in `Instruction_Memory.vhd`.  
+ The instructions in `Instruction_Memory.vhd` are represented in a binary format, one byte per memory address.  
+ 
+ For example:
+ 
+ ```vhdl
+ -- 1: I-type ADDI R0, R0, #0
+ -- opcode=0010, rd=000, rn=000, imm=00000000
+ 0  => "00100000", 
+ 1  => "00000000",
+ 
+ ```
+ 
+Each instruction is split across two memory addresses (bytes)
