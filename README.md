@@ -1,4 +1,4 @@
-# ARMa — 16-bit VHDL Processor
+# ARMa — 8-bit VHDL Processor
 
 VHDL implementation of an **educational processor** — instructions are 16 bits wide, while the datapath and registers are 8 bits (all arithmetic and logic operations are performed on 8-bit values).
  
@@ -91,3 +91,74 @@ VHDL implementation of an **educational processor** — instructions are 16 bits
 | 1110   | BZ R1, #20         | Branch to address 20 if R1 == 0            |
 | 1111   | BNZ R1, #20        | Branch to address 20 if R1 != 0            |
 
+
+
+
+## How to Run
+
+### linux:
+
+
+
+1. Install dependencies:
+
+   ```bash
+   sudo apt update
+   sudo apt install ghdl gtkwave
+   ```
+
+2. Clone repository:
+
+   ```bash
+   git clone https://github.com/AshkanRN/ca-project-gu.git
+   cd your-repo
+   ```
+
+3. Make the run script executable:
+
+   ```bash
+   chmod +x run.sh
+   ```
+
+4. Run:
+
+   ```bash
+   ./run.sh
+   ```
+
+5. View the waveform:
+   ```bash
+   gtkwave cpu_wave.vcd
+   ```
+
+  
+ - Note: The installation command shown uses apt for Debian/Ubuntu/Mint. For other Linux distributions, use your package manager
+
+
+### Windows (Active-HDL)
+
+1. **Install Active-HDL**  
+   Download from [Aldec Active-HDL](https://www.aldec.com/en/products/fpga_simulation/active_hdl_student) and follow the installer instructions.
+
+3. **Clone repository**:
+
+   ```bash
+   git clone https://github.com/AshkanRN/ca-project-gu.git
+   cd your-repo
+   ```
+
+4. **Open the project**  
+   - Create a new project in Active-HDL.  
+   - Add all files from `CPU_components/` as **design sources**.  
+   - Add `CPU_TB.vhd` from `Testbenches/` as a **testbench**.
+
+5. **Set top-level module**  
+   - **Important:** Right-click `CPU_TB.vhd` and select **“Set as Top”**.  
+   - This ensures the simulation runs using your CPU testbench.
+
+6. **Compile and run**  
+   - Compile all files (CPU components first, then the testbench).  
+   - Run the simulation using the testbench (`CPU_TB.vhd`).  
+
+7. **View signals**  
+   - Open the waveform viewer inside Active-HDL to inspect signals during simulation.
