@@ -104,6 +104,8 @@ VHDL implementation of an **educational processor** — instructions are 16 bits
 
    ```bash
    sudo apt update
+   ```
+   ```bash
    sudo apt install ghdl gtkwave
    ```
 
@@ -111,7 +113,9 @@ VHDL implementation of an **educational processor** — instructions are 16 bits
 
    ```bash
    git clone https://github.com/AshkanRN/ca-project-gu.git
-   cd your-repo
+   ```
+   ```bash
+   cd ca-project-gu
    ```
 
 3. Make the run script executable:
@@ -144,7 +148,9 @@ VHDL implementation of an **educational processor** — instructions are 16 bits
 
    ```bash
    git clone https://github.com/AshkanRN/ca-project-gu.git
-   cd your-repo
+   ```
+   ```bash
+   cd ca-project-gu
    ```
 
 4. **Open the project**  
