@@ -112,10 +112,10 @@ VHDL implementation of an **educational processor** — instructions are 16 bits
 2. Clone repository:
 
    ```bash
-   git clone https://github.com/AshkanRN/ca-project-gu.git
+   git clone https://github.com/AshkanRN/ca-project.git
    ```
    ```bash
-   cd ca-project-gu
+   cd ca-project
    ```
 
 3. Make the run script executable:
@@ -147,10 +147,10 @@ VHDL implementation of an **educational processor** — instructions are 16 bits
 3. **Clone repository**:
 
    ```bash
-   git clone https://github.com/AshkanRN/ca-project-gu.git
+   git clone https://github.com/AshkanRN/ca-project.git
    ```
    ```bash
-   cd ca-project-gu
+   cd ca-project
    ```
 
 4. **Open the project**  
